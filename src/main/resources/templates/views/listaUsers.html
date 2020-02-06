@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{fragments/main_layout}">
+<head>
+   <title>Register Form</title>
+
+</head>
+<body>
+  
+   <div layout:fragment="content" class="container mySpace">
+     <form action="/users" class="form-inline">
+       <div class="form-group mb-2">
+        <input type="text" class="form-control" name="nome" placeholder="Search" />
+        <input type="Submit" value="Search" class="btn btn-primary" />
+       </div>
+     </form>
+     
+     <div class="card">
+       <div class="card card-body">
+         <table class="table table-hover">
+           <thead>
+             <tr>
+              <th>Nome: </th>
+              <th>Cognome: </th>
+              <th>Email: </th>
+              <th>Aggiungi  Compiti</th>
+             </tr>
+           </thead>
+           <tbody>
+            <tr th:each="user:${users}">
+              <td th:text="${user.nome}"></td>
+              <td th:text="${user.cognome}"></td>
+              <td th:text="${user.email}"></td>
+               
+              <td><a th:href="@{/addTask(email=${user.email})}" class="btn btn-success"></a></td>
+               
+               
+            </tr>
+           </tbody>
+         </table>
+       </div>
+     </div>
+   </div>
+ 
+ 
+ 
+ 
+</body>
+</html>
